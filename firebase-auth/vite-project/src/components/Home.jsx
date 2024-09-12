@@ -5,7 +5,8 @@ import {
   signOut,
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { auth } from "../firebase-config";
+import { auth, signInWithGoogle } from "../firebase-config";
+import "./Home.css"
 
 function Home() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -13,7 +14,6 @@ function Home() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -24,30 +24,29 @@ function Home() {
 
   const registerUser = async () => {
     try {
-      const user = await createUserWithEmailAndPassword(
+         await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
       );
-      setRegisterEmail("")
-      setRegisterPassword("")
-      alert("User register successfully")
+      setRegisterEmail("");
+      setRegisterPassword("");
+      alert("User register successfully");
     } catch (error) {
       console.error(error.message);
     }
   };
 
   const handleLogOut = async () => {
+    localStorage.removeItem("name")
+    localStorage.removeItem("email")
+    localStorage.removeItem("profilePic")
     await signOut(auth);
   };
 
   const loginUser = async () => {
     try {
-      await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       setIsLoggedIn(true);
       setLoginEmail("");
       setLoginPassword("");
@@ -55,6 +54,10 @@ function Home() {
       console.error(error.message);
     }
   };
+
+  const handleSignWithGoogle = () => {
+
+  }
 
   return (
     <>
@@ -91,13 +94,20 @@ function Home() {
         <button onClick={loginUser}>Login</button>
       </div>
       <div>
-      {isLoggedIn && user && (
+        {/* {isLoggedIn && user && ( */}
           <>
-            <h3>Logged in as: {user.email}</h3>
-            <button onClick={handleLogOut}>Log Out</button>
+            <h3>Logged in as: {user?.email}</h3>
+            
           </>
-        )}
+        {/* )} */}
       </div>
+      <div style={{marginTop:"20px"}}>
+        <button onClick={signInWithGoogle} className="login-with-google-btn">SignIn with Google</button>
+        <h2>{localStorage.getItem("name")}</h2>
+        <h2>{localStorage.getItem("email")}</h2>
+        <img src={localStorage.getItem("profilePic")} alt="" />
+      </div>
+      <button onClick={handleLogOut}>LogOut</button>
     </>
   );
 }
