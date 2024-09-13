@@ -8,7 +8,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   let navigate = useNavigate();
 
   const handleLogot = () => {
@@ -30,12 +30,14 @@ function App() {
             ) : (
               <>
                 <Link to="/createPost">Create Post</Link>
-                <button onClick={handleLogot}>Logout</button>
+                <Link>
+                <div onClick={handleLogot}>Logout</div>
+                </Link>
               </>
             )}
           </nav>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home isAuth={isAuth} />} />
             <Route
               path="/createPost"
               element={<CreatePost isAuth={isAuth} />}
