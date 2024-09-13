@@ -149,7 +149,7 @@ textarea {
   height: auto;
   max-height: 600px;
   background-color: rgb(250, 250, 250);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
@@ -159,16 +159,21 @@ textarea {
   display: flex;
   justify-content: center;
   width: 100%;
+  color: gray;
+  font-size: 15px;
 }
 
 .postHeader .title {
   flex: 50%;
+  color: gray;
 }
 .postHeader .deletePost {
-  flex: 50%;
+  flex: 10%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-top: 20px;
+  padding: auto;
 }
 
 .deletePost button {
