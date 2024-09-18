@@ -12,17 +12,17 @@ function App() {
   const [room, setRoom] = useState(null);
   const roomInputRef = useRef();
 
-  const handleSignOutUser = async() => {
+  const handleSignOutUser = async () => {
     await signOut(auth);
     cookies.remove("auth-token");
     setIsAuth(false);
-    setRoom(null)
-  }
+    setRoom(null);
+  };
 
   if (!isAuth) {
     return (
       <>
-        <h2>Chat-App</h2>
+        <h2 style={{ textAlign: "center" }}>Chat-App</h2>
         <Auth setIsAuth={setIsAuth} />
       </>
     );
@@ -41,8 +41,10 @@ function App() {
         </div>
       )}
 
-      <div className="sign-out">
-        <button onClick={handleSignOutUser}>SignOut</button>
+      <div>
+        <button className="button-92" onClick={handleSignOutUser}>
+          SignOut
+        </button>
       </div>
     </>
   );
