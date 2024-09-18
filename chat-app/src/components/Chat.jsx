@@ -76,7 +76,7 @@ function Chat({ room }) {
           onChange={(e) => setNewMessage(e.target.value)}
           value={newMessage}
         />
-        <button type="submit" className="send-button">
+        <button type="submit" className="button-92">
           Send
         </button>
       </form>

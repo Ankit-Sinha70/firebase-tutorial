@@ -9,7 +9,7 @@ body {
   width: 100vw;
   height: 100vh;
   flex-direction: column;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .app-header {
@@ -36,20 +36,21 @@ body {
 }
 
 .room input {
-  width: 200px;
+  width: 400px;
   height: 30px;
   border: 2px solid #3b5998;
-  border-radius: 6px;
+  border-radius: 30px;
   padding-left: 5px;
   font-size: 20px;
   text-align: center;
   margin: 5px;
 }
+
 .room button {
   width: 210px;
   height: 40px;
   border: none;
-  border-radius: 6px;
+  border-radius: 30px;
   padding-left: 5px;
   font-size: 20px;
   text-align: center;
@@ -63,17 +64,14 @@ body {
   margin-top: 50px;
 }
 
-/* CSS */
-
-/* CSS */
 .button-92 {
   --c: #fff;
-  background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,#3b5998;
+  background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p, 100%)/300% no-repeat, #3b5998;
   color: #0000;
   border: none;
-  transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
-  text-shadow: calc(var(--_i,-1)* 0.08em) -.01em 0   var(--c),
-    calc(var(--_i,-1)*-0.08em)  .01em 2px #0004;
+  transform: perspective(500px) rotateY(calc(20deg*var(--_i, -1)));
+  text-shadow: calc(var(--_i, -1)* 0.08em) -.01em 0 var(--c),
+    calc(var(--_i, -1)*-0.08em) .01em 2px #0004;
   outline-offset: .1em;
   transition: 0.3s;
   border-radius: 20px;
@@ -96,10 +94,35 @@ body {
 .button-92 {
   text-align: center;
   display: flex;
-  align-items:flex-end;
+  align-items: flex-end;
   font-weight: bold;
   font-size: 1.5rem;
   margin: auto;
   cursor: pointer;
   padding: 8px 8px;
+}
+
+input {
+  font-size: 13px;
+  border-radius: 4px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+  /* height: 30px; */
+  width: 400px;
+  margin: auto;
+
+  :hover {
+    border-color: #ccc;
+  }
+
+  :focus {
+    border-color: #9147ff;
+    background: #fff;
+  }
+
 }

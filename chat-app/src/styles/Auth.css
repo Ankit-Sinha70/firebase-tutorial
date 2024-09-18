@@ -1,10 +1,17 @@
 .auth {
   text-align: center;
+  width: 40%;
+  margin: auto;
+  height: 50vh;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  align-items: center;
+  border-radius: 30px;
+  background-color: #F5F5F5;
 }
 
 .auth button {
-  width: 200px;
-  height: 50px;
+  width: 130px;
+  height: 40px;
   border: none;
   background-color: #3b5998;
   color: white;
@@ -54,4 +61,10 @@
     box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
     cursor: not-allowed;
   }
+}
+
+.logIn-section {
+  text-align: center;
+  margin-top: 30px;
+  padding: 50px;
 }
