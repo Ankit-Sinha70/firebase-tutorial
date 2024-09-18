@@ -57,7 +57,7 @@ function Chat({ room }) {
   return (
     <div className="chat-app">
       <div className="header">
-        <h2>Welcome to : {room}</h2>
+        <h2>Welcome to : {room.toUpperCase()}</h2>
       </div>
       <div className="messages">
         {messages?.map((item) => {
