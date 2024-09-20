@@ -7,7 +7,6 @@ function App() {
   return (
     <>
       <div className="App">
-        <h2>Expanse Tracker App</h2>
         <Routes>
           <Route path="/" element={<Auth />} />
           <Route path="/expense-tracker" element={<ExpenseTracker />} />
