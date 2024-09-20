@@ -8,7 +8,7 @@ export const ExpenseTracker = () => {
   const [transactionType, setTransactionType] = useState("expense");
   const { addTransaction } = useAddTransaction();
   const { transactions } = useGetTransaction();
-  console.log('transactions: ', transactions);
+  console.log("transactions: ", transactions);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -77,18 +77,29 @@ export const ExpenseTracker = () => {
       <div className="transactions">
         <h3>Transactions</h3>
         <ul>
-          {transactions?.map((item) => {
-            console.log('item: ', item);
-            const { description, transactionAmount, transactionType } = item;
-            return (
-              <div>
-                <li>
-                  <h4>{description}</h4>
-                  <h4>${transactionAmount} : <label style={{color: transactionType === "expense" ? "red" : "green"}}>{transactionType}</label></h4>
-                </li>
-               </div>
-            );
-          })}
+          {transactions &&
+            transactions?.map((item) => {
+              console.log("item: ", item);
+              // const { description, transactionAmount, transactionType } = item;
+              return (
+                <div key={item.id}>
+                  <li>
+                    <h4>{item.description}</h4>
+                    <h4>
+                      ${item.transactionAmount} :{" "}
+                      <label
+                        style={{
+                          color:
+                            transactionType === "expense" ? "red" : "green",
+                        }}
+                      >
+                        {item.transactionType}
+                      </label>
+                    </h4>
+                  </li>
+                </div>
+              );
+            })}
         </ul>
       </div>
     </div>
