@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+/* Import a stylish font */
+.expense-tracker {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 600px;
+    max-height: 800px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
+}
+
+.container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    color: #ffffff;
+    text-align: center;
+    margin: 20px 0;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.container h1:hover {
+    transform: scale(1.05);
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.balance {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.balance h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(135deg, #1fd456 0%, #5a57f5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.balance h3:hover {
+    transform: scale(1.05);
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.summary div {
+    width: 48%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.add-transaction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-transaction input[type="text"],
+.add-transaction input[type="number"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.add-transaction input[type="radio"] {
+    margin-right: 10px;
+}
+
+.add-transaction button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-transaction button:hover {
+    background-color: #0056b3;
+}
+
+.transactions {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #f7f7f7;
+    width: 80%;
+    max-width: 600px;
+    max-width: 600px;
+    max-height: 700px;
+    overflow-y: scroll;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+
+.transactions ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.transactions li h4 {
+    margin: 0;
+}
+
+.transaction-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card.expense {
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #842029;
+}
+
+.transaction-card.income {
+    background-color: #d1e7dd;
+    border: 1px solid #badbcc;
+    color: #0f5132;
+}
+
+.transaction-card h4 {
+    margin: 0;
+}
+
+.transactions::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+
+.transactions {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.transactions::-webkit-scrollbar {
+    display: none;
+}

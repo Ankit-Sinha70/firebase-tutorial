@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAddTransaction from "../../hooks/useAddTransaction";
 import { useGetTransaction } from "../../hooks/useGetTransactions";
+import "./styles.css";
 
 export const ExpenseTracker = () => {
   const [description, setDescription] = useState("");
@@ -74,27 +75,23 @@ export const ExpenseTracker = () => {
           <button type="submit">Add Transaction</button>
         </form>
       </div>
+        {/* <h3>Transactions</h3> */}
       <div className="transactions">
-        <h3>Transactions</h3>
         <ul>
           {transactions &&
-            transactions?.map((item) => {
-              console.log("item: ", item);
-              // const { description, transactionAmount, transactionType } = item;
+            transactions.map((item) => {
               return (
-                <div key={item.id}>
+                <div
+                  key={item.id}
+                  className={`transaction-card ${
+                    item.transactionType === "expense" ? "expense" : "income"
+                  }`}
+                >
                   <li>
                     <h4>{item.description}</h4>
                     <h4>
                       ${item.transactionAmount} :{" "}
-                      <label
-                        style={{
-                          color:
-                            transactionType === "expense" ? "red" : "green",
-                        }}
-                      >
-                        {item.transactionType}
-                      </label>
+                      <label>{item.transactionType}</label>
                     </h4>
                   </li>
                 </div>
