@@ -10,8 +10,7 @@ import "./styles.css";
 
 export const ExpenseTracker = () => {
   const [currentTransactionId, setCurrentTransactionId] = useState(null);
-  const { transactions, transactionTotal, setTransactions } =
-    useGetTransaction();
+  const { transactions, transactionTotal, setTransactions } = useGetTransaction();
   const [transactionType, setTransactionType] = useState("expense");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const { balance, income, expense } = transactionTotal;
@@ -89,7 +88,7 @@ export const ExpenseTracker = () => {
           <div className="profile">
             <img
               className="profile-photo"
-              src={profile.toString()}
+              src={profile}
               alt={"profilePhoto"}
               height={100}
               width={100}

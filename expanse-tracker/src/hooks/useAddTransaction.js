@@ -1,8 +1,8 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../config/firebase";
 import { useGetUserInfo } from "./useGetUserInfo";
+import { db } from "../config/firebase";
 
- const useAddTransaction = () => {
+const useAddTransaction = () => {
   const getTransactionRef = collection(db, "transactions");
   const { userId } = useGetUserInfo();
   const addTransaction = async ({

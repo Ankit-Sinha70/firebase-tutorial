@@ -1,7 +1,7 @@
 body {
-  background-color: #f4f4f4; /* Soft background for contrast */
+  background-color: #d1cdcd; /* Soft background for contrast */
   color: #333;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: content-box;
 }

@@ -38,16 +38,15 @@ export const useGetTransaction = () => {
           } else {
             totalIncome += Number(data.transactionAmount);
           }
-
         });
         setTransactions(docs);
 
-        let balance = totalIncome - totalExense
+        let balance = totalIncome - totalExense;
         setTransactionTotal({
-          balance, 
+          balance,
           income: totalIncome,
-          expense: totalExense
-        })
+          expense: totalExense,
+        });
       });
     } catch (error) {
       console.error(error);
