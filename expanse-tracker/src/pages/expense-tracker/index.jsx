@@ -126,8 +126,7 @@ export const ExpenseTracker = () => {
             required
             onChange={(e) => setDescription(e.target.value)}
           />
-          <br />
-          <br />
+            <br />
           <input
             type="number"
             placeholder="Amount..."
@@ -158,20 +157,9 @@ export const ExpenseTracker = () => {
               <label htmlFor="income">Income</label>
             </div>
           </div>
-
-          <br />
-          <br />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              gap: "20px",
-            }}
-          >
             <button type="submit">Add Transaction</button>
-            <button onClick={handleSignOut}>SignOut</button>
-          </div>
         </form>
+            <button onClick={handleSignOut} className="signout">SignOut</button>
       </div>
 
       <div className="transactions">
