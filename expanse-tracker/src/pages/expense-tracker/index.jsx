@@ -1,23 +1,23 @@
-import { useState } from "react";
-import useAddTransaction from "../../hooks/useAddTransaction";
 import { useGetTransaction } from "../../hooks/useGetTransactions";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import useAddTransaction from "../../hooks/useAddTransaction";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
-import "./styles.css";
-import { signOut } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
+import { useState } from "react";
+import "./styles.css";
 
 export const ExpenseTracker = () => {
   const [currentTransactionId, setCurrentTransactionId] = useState(null);
-  const [description, setDescription] = useState("");
-  const [transactionAmount, setTransactionAmount] = useState(0);
-  const [transactionType, setTransactionType] = useState("expense");
-  const { addTransaction } = useAddTransaction();
   const { transactions, transactionTotal, setTransactions } =
     useGetTransaction();
-  const { name, profile } = useGetUserInfo();
+  const [transactionType, setTransactionType] = useState("expense");
+  const [transactionAmount, setTransactionAmount] = useState(0);
   const { balance, income, expense } = transactionTotal;
+  const [description, setDescription] = useState("");
+  const { addTransaction } = useAddTransaction();
+  const { name, profile } = useGetUserInfo();
   console.log("profile: ", profile);
   const navigate = useNavigate();
 
