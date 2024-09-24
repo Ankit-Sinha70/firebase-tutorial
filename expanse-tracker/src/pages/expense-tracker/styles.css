@@ -290,7 +290,7 @@
   .transactions button {
     padding: 5px 10px;
     margin-top: 10px;
-    background-color: #e99090;
+    background-color: #91c2ac;
     color: #0c0c0c;
     border: none;
     border-radius: 4px;
@@ -299,6 +299,6 @@
 }
 
 .transactions button:hover {
-    background-color: #56eba8;
+    background-color: #e99090;
 }
   

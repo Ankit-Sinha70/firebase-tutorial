@@ -6,14 +6,16 @@ import "./styles.css";
 import { signOut } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
-import { deleteDoc, doc } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 
 export const ExpenseTracker = () => {
+  const [currentTransactionId, setCurrentTransactionId] = useState(null);
   const [description, setDescription] = useState("");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const [transactionType, setTransactionType] = useState("expense");
   const { addTransaction } = useAddTransaction();
-  const { transactions, transactionTotal, setTransactions } = useGetTransaction();
+  const { transactions, transactionTotal, setTransactions } =
+    useGetTransaction();
   const { name, profile } = useGetUserInfo();
   const { balance, income, expense } = transactionTotal;
   console.log("profile: ", profile);
@@ -21,7 +23,18 @@ export const ExpenseTracker = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    addTransaction({ description, transactionAmount, transactionType });
+    if (currentTransactionId) {
+      // Update the existing transaction
+      await updateTransaction(currentTransactionId, {
+        description,
+        transactionAmount,
+        transactionType,
+      });
+      setCurrentTransactionId(null);
+    } else {
+      // Add new transaction
+      addTransaction({ description, transactionAmount, transactionType });
+    }
     setDescription("");
     setTransactionAmount("");
   };
@@ -38,18 +51,35 @@ export const ExpenseTracker = () => {
     }
   };
 
-  const handleDelete = async(id) => {
+  const handleDelete = async (id) => {
     console.log(id, "id");
     try {
       const postDoc = doc(db, "transactions", id);
       await deleteDoc(postDoc);
-      setTransactions((prevPosts) => prevPosts.filter((post) => post.id !== id));
+      setTransactions((prevPosts) =>
+        prevPosts.filter((post) => post.id !== id)
+      );
       alert("Data deleted successfully");
     } catch (error) {
       console.error("Error deleting post: ", error);
     }
+  };
 
-  }
+  const handleEdit = (transaction) => {
+    setCurrentTransactionId(transaction.id);
+    setDescription(transaction.description);
+    setTransactionAmount(transaction.transactionAmount);
+    setTransactionType(transaction.transactionType);
+  };
+
+  const updateTransaction = async (id, updatedTransaction) => {
+    const transactionDocRef = doc(db, "transactions", id);
+    try {
+      await updateDoc(transactionDocRef, updatedTransaction);
+    } catch (error) {
+      console.error("Error updating transaction: ", error);
+    }
+  };
 
   return (
     <div className="expense-tracker">
@@ -160,8 +190,28 @@ export const ExpenseTracker = () => {
                     <h4>{item.description}</h4>
                     <h4>
                       ${item.transactionAmount} :{" "}
-                      <label>{item.transactionType}</label><br/>
-                      <button className="delete-btn" onClick={() => handleDelete(item.id)}>Delete Expense</button>
+                      <label>{item.transactionType}</label>
+                      <br />
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-around",
+                          gap: "10px",
+                        }}
+                      >
+                        <button
+                          className="delete-btn"
+                          onClick={() => handleDelete(item.id)}
+                        >
+                          Delete Expense
+                        </button>
+                        <button
+                          className="edit-btn"
+                          onClick={() => handleEdit(item)}
+                        >
+                          Edit
+                        </button>
+                      </div>
                     </h4>
                   </li>
                 </div>
