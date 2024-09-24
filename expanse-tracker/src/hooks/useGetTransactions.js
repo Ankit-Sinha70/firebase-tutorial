@@ -58,5 +58,5 @@ export const useGetTransaction = () => {
     getTransaction();
   }, []);
 
-  return { transactions, transactionTotal };
+  return { transactions, transactionTotal, setTransactions };
 };

@@ -4,15 +4,16 @@ import { useGetTransaction } from "../../hooks/useGetTransactions";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import "./styles.css";
 import { signOut } from "firebase/auth";
-import { auth } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
+import { deleteDoc, doc } from "firebase/firestore";
 
 export const ExpenseTracker = () => {
   const [description, setDescription] = useState("");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const [transactionType, setTransactionType] = useState("expense");
   const { addTransaction } = useAddTransaction();
-  const { transactions, transactionTotal } = useGetTransaction();
+  const { transactions, transactionTotal, setTransactions } = useGetTransaction();
   const { name, profile } = useGetUserInfo();
   const { balance, income, expense } = transactionTotal;
   console.log("profile: ", profile);
@@ -36,6 +37,19 @@ export const ExpenseTracker = () => {
       console.error(error, "Error while sign-out");
     }
   };
+
+  const handleDelete = async(id) => {
+    console.log(id, "id");
+    try {
+      const postDoc = doc(db, "transactions", id);
+      await deleteDoc(postDoc);
+      setTransactions((prevPosts) => prevPosts.filter((post) => post.id !== id));
+      alert("Data deleted successfully");
+    } catch (error) {
+      console.error("Error deleting post: ", error);
+    }
+
+  }
 
   return (
     <div className="expense-tracker">
@@ -146,7 +160,8 @@ export const ExpenseTracker = () => {
                     <h4>{item.description}</h4>
                     <h4>
                       ${item.transactionAmount} :{" "}
-                      <label>{item.transactionType}</label>
+                      <label>{item.transactionType}</label><br/>
+                      <button className="delete-btn" onClick={() => handleDelete(item.id)}>Delete Expense</button>
                     </h4>
                   </li>
                 </div>

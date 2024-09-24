@@ -287,4 +287,18 @@
     transform: scale(1.5) rotate(360deg);
   }
   
+  .transactions button {
+    padding: 5px 10px;
+    margin-top: 10px;
+    background-color: #e99090;
+    color: #0c0c0c;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.transactions button:hover {
+    background-color: #56eba8;
+}
   
