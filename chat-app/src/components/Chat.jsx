@@ -10,6 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 import { auth, db } from "../firebase-config";
+
 function Chat({ room }) {
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -25,8 +26,6 @@ function Chat({ room }) {
       const dataUsers = onSnapshot(queryMessageRef, (items) => {
         let messages = [];
         items.forEach((doc) => {
-          console.log(doc);
-          console.log(doc.data());
           messages.push({ ...doc.data(), id: doc.id });
         });
         setMessages(messages);
@@ -36,6 +35,7 @@ function Chat({ room }) {
       console.error("Error Occured", error);
     }
   };
+
   useEffect(() => {
     getMessages();
   }, []);
@@ -44,7 +44,6 @@ function Chat({ room }) {
     if (newMessage === "") return;
 
     e.preventDefault();
-    console.log(newMessage);
     await addDoc(messageRef, {
       text: newMessage,
       createdAt: serverTimestamp(),
@@ -57,13 +56,17 @@ function Chat({ room }) {
   return (
     <div className="chat-app">
       <div className="header">
-        <h2>Welcome to : {room.toUpperCase()}</h2>
+        <h2>Welcome to: {room.toUpperCase()}</h2>
       </div>
       <div className="messages">
         {messages?.map((item) => {
+          const isCurrentUser = item.user === auth.currentUser.displayName;
           return (
-            <div className="message" key={item.id}>
-              <span className="user">{item.user}</span>: {item.text}
+            <div
+              className={`message ${isCurrentUser ? "sent" : "received"}`}
+              key={item.id}
+            >
+              <span className="user">{item.user}</span> {item.text}
             </div>
           );
         })}
