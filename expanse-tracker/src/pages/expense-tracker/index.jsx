@@ -10,7 +10,8 @@ import "./styles.css";
 
 export const ExpenseTracker = () => {
   const [currentTransactionId, setCurrentTransactionId] = useState(null);
-  const { transactions, transactionTotal, setTransactions } = useGetTransaction();
+  const { transactions, transactionTotal, setTransactions } =
+    useGetTransaction();
   const [transactionType, setTransactionType] = useState("expense");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const { balance, income, expense } = transactionTotal;
@@ -126,7 +127,7 @@ export const ExpenseTracker = () => {
             required
             onChange={(e) => setDescription(e.target.value)}
           />
-            <br />
+          <br />
           <input
             type="number"
             placeholder="Amount..."
@@ -157,9 +158,11 @@ export const ExpenseTracker = () => {
               <label htmlFor="income">Income</label>
             </div>
           </div>
-            <button type="submit">Add Transaction</button>
+          <button type="submit">Add Transaction</button>
         </form>
-            <button onClick={handleSignOut} className="signout">SignOut</button>
+        <button onClick={handleSignOut} className="signout">
+          SignOut
+        </button>
       </div>
 
       <div className="transactions">
