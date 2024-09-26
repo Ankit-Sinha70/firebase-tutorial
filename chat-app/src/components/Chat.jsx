@@ -10,8 +10,12 @@ import {
   where,
 } from "firebase/firestore";
 import { auth, db } from "../firebase-config";
+import { signOut } from "firebase/auth";
+import { Auth } from "./Auth";
+import Cookies from "universal-cookie";
 
-function Chat({ room }) {
+function Chat({ room, setIsAuth, isAuth, setRoom }) {
+  const cookies = new Cookies();
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const messageRef = collection(db, "messages");
@@ -53,14 +57,32 @@ function Chat({ room }) {
     setNewMessage("");
   };
 
+  const handleSignOutUser = async () => {
+    await signOut(auth);
+    cookies.remove("auth-token");
+    setIsAuth(false);
+    setRoom(null);
+  };
+  if (!isAuth) {
+    return (
+      <>
+        <h2 style={{ textAlign: "center" }}>Chat-App</h2>
+        <Auth setIsAuth={setIsAuth} />
+      </>
+    );
+  }
+
   return (
     <div className="chat-app">
       <div className="header">
         <h2>Welcome to: {room.toUpperCase()}</h2>
+        <button className="button-24" onClick={handleSignOutUser}>
+          SignOut
+        </button>
       </div>
       <div className="messages">
         {messages?.map((item) => {
-          const isCurrentUser = item.user === auth.currentUser.displayName;
+          const isCurrentUser = item.user === auth.currentUser?.displayName;
           return (
             <div
               className={`message ${isCurrentUser ? "sent" : "received"}`}

@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       {room ? (
-        <Chat room={room} />
+        <Chat room={room} setIsAuth={setIsAuth} isAuth={isAuth} setRoom={setRoom} />
       ) : (
         <div className="room">
           <label>Enter Room Name</label>
