@@ -38,14 +38,14 @@ function App() {
           <button onClick={() => setRoom(roomInputRef.current.value)}>
             Enter Chat
           </button>
-        </div>
-      )}
-
       <div>
         <button className="button-92" onClick={handleSignOutUser}>
           SignOut
         </button>
       </div>
+        </div>
+      )}
+
     </>
   );
 }
