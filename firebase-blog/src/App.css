@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 body {
   padding: 0%;
   margin: 0%;
@@ -19,6 +20,7 @@ nav {
   text-decoration: none;
   background: linear-gradient(90deg, #eeecec, #757474);
 }
+
 nav a {
   color: white;
   text-decoration: none;
@@ -28,8 +30,8 @@ nav a {
 }
 
 nav a.active {
-  background-color: #4CAF50; 
-  color: rgb(26, 142, 196); 
+  background-color: #4CAF50;
+  color: rgb(26, 142, 196);
 }
 
 
@@ -61,11 +63,12 @@ a {
   display: flex;
   flex-direction: column;
   box-shadow: rgba(240, 218, 218, 0.849) 0px 19px 38px, rgba(93, 176, 214, 0.22) 0px 15px 12px;
-  transition: transform 0.7s ease, box-shadow 0.3s ease; 
+  transition: transform 0.7s ease, box-shadow 0.3s ease;
 }
+
 .cpContainer:hover {
-  transform: scale(1.05); 
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); 
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -76,6 +79,7 @@ a {
 .cpContainer label {
   font-size: 25px;
 }
+
 .cpContainer .inputGp {
   margin-top: 30px;
   display: flex;
@@ -93,6 +97,7 @@ a {
 .inputGp input {
   height: 40px;
 }
+
 .inputGp textarea {
   height: 150px;
 }
@@ -105,6 +110,7 @@ a {
   cursor: pointer;
   font-size: 18px;
 }
+
 input,
 textarea {
   margin-top: 5px;
@@ -124,7 +130,6 @@ textarea {
   font-size: 30px;
 }
 
-/* GOOGLE BUTTOn */
 .login-with-google-btn {
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
@@ -143,17 +148,21 @@ textarea {
   background-position: 10px 20px;
   border-radius: 20px;
 }
+
 .login-with-google-btn:hover {
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
 }
+
 .login-with-google-btn:active {
   background-color: #eeeeee;
 }
+
 .login-with-google-btn:focus {
   outline: none;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
     0 0 0 3px #c8dafc;
 }
+
 .login-with-google-btn:disabled {
   filter: grayscale(100%);
   background-color: #ebebeb;
@@ -171,7 +180,8 @@ textarea {
   padding-top: 20px;
 }
 
-.homePage .post {background: linear-gradient(90deg, #fffefe, #a1e4b5);
+.homePage .post {
+  background: linear-gradient(90deg, #fffefe, #a1e4b5);
   width: 600px;
   height: auto;
   max-height: 600px;
@@ -180,12 +190,12 @@ textarea {
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
-  transition: transform 0.7s ease, box-shadow 0.3s ease; 
+  transition: transform 0.7s ease, box-shadow 0.3s ease;
 }
 
 .homePage .post:hover {
-  transform: scale(1.05); 
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); 
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .post .postHeader {
@@ -200,6 +210,7 @@ textarea {
   flex: 50%;
   color: gray;
 }
+
 .postHeader .deletePost {
   flex: 10%;
   display: flex;
@@ -224,19 +235,20 @@ textarea {
   width: 100%;
   overflow: hidden;
   overflow: auto;
-  -ms-overflow-style: none;  
-  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   text-align: justify;
 }
+
 .post .postTextContainer::-webkit-scrollbar {
-  display: none;  
+  display: none;
 }
 
 .post .postTextContainer p {
-  white-space: nowrap;  
-  text-align: justify;  
-  overflow: hidden;     
-  text-overflow: ellipsis;  
+  white-space: nowrap;
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-left: 10px;
 }
 
@@ -296,19 +308,20 @@ h3 {
 .upload-btn:hover {
   background-color: #0056b3;
 }
+
 .image-card {
   padding: 10px;
   border-radius: 10px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  margin: 20px; 
-  display: inline-block; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  margin: 20px;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .image-card:hover {
-  transform: scale(1.05); 
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); 
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .image-card img {
@@ -357,4 +370,3 @@ h3 {
 .upload-btn:hover {
   background-color: #0056b3;
 }
-
