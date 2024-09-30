@@ -9,7 +9,6 @@ export const Auth = () => {
     const navigate = useNavigate()
     const handleGoogleLogin = async() => {
        const result = await signInWithPopup(auth, provider)
-       console.log('result: ', result);
        const authInfo = {
         userId: result.user.uid,
         name:result.user.displayName,

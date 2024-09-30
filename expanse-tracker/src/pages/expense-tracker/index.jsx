@@ -18,7 +18,6 @@ export const ExpenseTracker = () => {
   const [description, setDescription] = useState("");
   const { addTransaction } = useAddTransaction();
   const { name, profile } = useGetUserInfo();
-  console.log("profile: ", profile);
   const navigate = useNavigate();
 
   const onSubmit = async (event) => {
@@ -52,7 +51,6 @@ export const ExpenseTracker = () => {
   };
 
   const handleDelete = async (id) => {
-    console.log(id, "id");
     try {
       const postDoc = doc(db, "transactions", id);
       await deleteDoc(postDoc);
@@ -90,7 +88,7 @@ export const ExpenseTracker = () => {
             <img
               className="profile-photo"
               src={profile}
-              alt={"profilePhoto"}
+              alt="profilePhoto"
               height={100}
               width={100}
               style={{ borderRadius: "50%" }}

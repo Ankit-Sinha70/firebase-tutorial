@@ -1,6 +1,6 @@
+import { ExpenseTracker } from "./pages/expense-tracker";
 import { Route, Routes } from "react-router-dom";
 import { Auth } from "./pages/auth";
-import { ExpenseTracker } from "./pages/expense-tracker";
 import "./App.css";
 
 function App() {
