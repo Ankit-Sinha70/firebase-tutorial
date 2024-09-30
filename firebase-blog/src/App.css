@@ -17,7 +17,7 @@ nav {
   align-items: center;
   color: white;
   text-decoration: none;
-  background: linear-gradient(90deg, #000000, #434343);
+  background: linear-gradient(90deg, #eeecec, #757474);
 }
 nav a {
   color: white;
@@ -26,6 +26,12 @@ nav a {
   border-radius: 5px;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+nav a.active {
+  background-color: #4CAF50; 
+  color: rgb(26, 142, 196); 
+}
+
 
 nav a:hover {
   background-color: gray;
@@ -55,7 +61,13 @@ a {
   display: flex;
   flex-direction: column;
   box-shadow: rgba(240, 218, 218, 0.849) 0px 19px 38px, rgba(93, 176, 214, 0.22) 0px 15px 12px;
+  transition: transform 0.7s ease, box-shadow 0.3s ease; 
 }
+.cpContainer:hover {
+  transform: scale(1.05); 
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); 
+}
+
 
 .cpContainer h1 {
   text-align: center;
@@ -168,6 +180,12 @@ textarea {
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
+  transition: transform 0.7s ease, box-shadow 0.3s ease; 
+}
+
+.homePage .post:hover {
+  transform: scale(1.05); 
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); 
 }
 
 .post .postHeader {
@@ -215,10 +233,10 @@ textarea {
 }
 
 .post .postTextContainer p {
-  white-space: nowrap;  /* Prevent line breaks */
-  text-align: justify;  /* Align text to both left and right */
-  overflow: hidden;     /* Hide overflow if text is too long */
-  text-overflow: ellipsis;  /* Add ellipsis (...) if the text overflows */
+  white-space: nowrap;  
+  text-align: justify;  
+  overflow: hidden;     
+  text-overflow: ellipsis;  
   padding-left: 10px;
 }
 

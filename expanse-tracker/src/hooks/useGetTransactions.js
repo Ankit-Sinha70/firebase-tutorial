@@ -56,6 +56,5 @@ export const useGetTransaction = () => {
   useEffect(() => {
     getTransaction();
   }, []);
-
   return { transactions, transactionTotal, setTransactions };
 };

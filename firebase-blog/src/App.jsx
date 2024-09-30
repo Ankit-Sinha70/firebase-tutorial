@@ -24,16 +24,31 @@ function App() {
       <div>
         <>
           <nav>
-            <Link to="/">Home</Link>
+            <Link
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Home
+            </Link>
             <Link to="/uploadFile">Upload File</Link>
 
             {!isAuth ? (
               <Link to="/login">Login</Link>
             ) : (
               <>
-                <Link to="/createPost">Create Post</Link>
+                <Link
+                  to="/createPost"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Create Post
+                </Link>
                 <Link>
-                  <div onClick={handleLogot}>Logout</div>
+                  <div
+                    onClick={handleLogot}
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Logout
+                  </div>
                 </Link>
               </>
             )}
