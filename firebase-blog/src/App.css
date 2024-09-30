@@ -4,6 +4,7 @@
 body {
   padding: 0%;
   margin: 0%;
+  background: linear-gradient(90deg, #c7c3c3, #23f3ae);
 }
 
 nav {
@@ -16,6 +17,7 @@ nav {
   align-items: center;
   color: white;
   text-decoration: none;
+  background: linear-gradient(90deg, #000000, #434343);
 }
 nav a {
   color: white;
@@ -47,11 +49,12 @@ a {
   width: 500px;
   height: auto;
   padding: 20px;
-  background-color: black;
+  background: linear-gradient(90deg, #c7c3c3, #2fa37d);
   border-radius: 12px;
   color: white;
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(240, 218, 218, 0.849) 0px 19px 38px, rgba(93, 176, 214, 0.22) 0px 15px 12px;
 }
 
 .cpContainer h1 {
@@ -96,6 +99,7 @@ textarea {
 }
 
 .loginPage {
+  background: linear-gradient(90deg, #c7c3c3, #23f3ae);
   width: 100vw;
   height: calc(100vh - 80px);
   display: flex;
@@ -112,10 +116,10 @@ textarea {
 .login-with-google-btn {
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
-  padding: 5px 16px 12px 42px;
+  padding: 10px 16px 12px 42px;
   border: none;
   border-radius: 3px;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   color: #757575;
   font-size: 25px;
   font-weight: 500;
@@ -124,7 +128,8 @@ textarea {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
   background-color: white;
   background-repeat: no-repeat;
-  background-position: 12px 11px;
+  background-position: 10px 20px;
+  border-radius: 20px;
 }
 .login-with-google-btn:hover {
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -154,7 +159,7 @@ textarea {
   padding-top: 20px;
 }
 
-.homePage .post {
+.homePage .post {background: linear-gradient(90deg, #fffefe, #a1e4b5);
   width: 600px;
   height: auto;
   max-height: 600px;
@@ -200,8 +205,23 @@ textarea {
   max-height: 200px;
   width: 100%;
   overflow: hidden;
-  overflow-y: auto;
+  overflow: auto;
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+  text-align: justify;
 }
+.post .postTextContainer::-webkit-scrollbar {
+  display: none;  
+}
+
+.post .postTextContainer p {
+  white-space: nowrap;  /* Prevent line breaks */
+  text-align: justify;  /* Align text to both left and right */
+  overflow: hidden;     /* Hide overflow if text is too long */
+  text-overflow: ellipsis;  /* Add ellipsis (...) if the text overflows */
+  padding-left: 10px;
+}
+
 h3 {
   color: rgb(226, 28, 252);
   font-size: 13px;
@@ -258,3 +278,65 @@ h3 {
 .upload-btn:hover {
   background-color: #0056b3;
 }
+.image-card {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  margin: 20px; 
+  display: inline-block; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  cursor: pointer;
+}
+
+.image-card:hover {
+  transform: scale(1.05); 
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); 
+}
+
+.image-card img {
+  width: 200px;
+  height: auto;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #c7c3c3, #23f3ae);
+}
+
+.custom-file-input {
+  padding: 10px;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  font-size: 16px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-file-input:hover {
+  border-color: #0056b3;
+  background-color: #e6f1ff;
+}
+
+.upload-btn {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+  background-color: #0056b3;
+}
+

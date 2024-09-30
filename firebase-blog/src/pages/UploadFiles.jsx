@@ -13,11 +13,11 @@ function UploadFiles() {
     if (uploadFile === null) return;
     const imageRef = ref(storage, `images/${uploadFile.name + v4()}`);
     uploadBytes(imageRef, uploadFile).then((snapshot) => {
-     getDownloadURL(snapshot.ref).then((url) => {
-         setImageList((val) => [...val, url])
-         alert("Image Uploaded");
-         setFileUpload("")
-     })
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageList((val) => [...val, url]);
+        alert("Image Uploaded");
+        setFileUpload("");
+      });
     });
   };
 
@@ -34,25 +34,27 @@ function UploadFiles() {
     getData();
   }, []);
   return (
-    <div>
-      <input
-        type="file"
-        placeholder="Upload Files..."
-        onChange={(e) => setFileUpload(e.target.files[0])}
-      />
-      <button onClick={handleUploadFiles}>Upload</button>
-
+    <>
+      <div className="upload-container">
+        <input
+          type="file"
+          placeholder="Upload Files..."
+          onChange={(e) => setFileUpload(e.target.files[0])}
+        />
+        <button onClick={handleUploadFiles} className="upload-btn">
+          Upload
+        </button>
+      </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
         {imageList?.map((item, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="image-card">
               <img
                 src={item}
                 alt="ImageList"
                 style={{
                   width: "200px",
                   height: "auto",
-                  margin: "10px",
                   borderRadius: "10px",
                 }}
               />
@@ -60,7 +62,7 @@ function UploadFiles() {
           );
         })}
       </div>
-    </div>
+    </>
   );
 }
 
