@@ -84,6 +84,7 @@ a {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+  
 }
 
 .inputGp input,
@@ -92,6 +93,7 @@ a {
   border: none;
   border-radius: 2px;
   padding: 5px;
+  outline: 0.5px solid gray;
 }
 
 .inputGp input {
@@ -370,4 +372,32 @@ h3 {
 
 .upload-btn:hover {
   background-color: #0056b3;
+}
+
+.editPostForm {
+  margin-bottom: 20px;
+}
+
+.editPostForm input,
+.editPostForm textarea {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 15px;
+}
+
+.editPostForm button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.editPostForm button:hover {
+  background-color: #45a049;
 }
