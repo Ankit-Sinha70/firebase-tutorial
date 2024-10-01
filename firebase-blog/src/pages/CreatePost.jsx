@@ -17,7 +17,6 @@ function CreatePost({isAuth}) {
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
     navigate("/")
-    console.log("response: ", response);
   };
 
   useEffect(() => {
