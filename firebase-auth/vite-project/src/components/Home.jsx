@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth, signInWithGoogle } from "../firebase-config";
-import "./Home.css"
+import "./Home.css";
 
 function Home() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -24,30 +24,29 @@ function Home() {
 
   const registerUser = async () => {
     try {
-         await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
       );
       setRegisterEmail("");
       setRegisterPassword("");
-      alert("User register successfully");
+      alert("User registered successfully");
     } catch (error) {
       console.error(error.message);
     }
   };
 
   const handleLogOut = async () => {
-    localStorage.removeItem("name")
-    localStorage.removeItem("email")
-    localStorage.removeItem("profilePic")
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("profilePic");
     await signOut(auth);
   };
 
   const loginUser = async () => {
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      setIsLoggedIn(true);
       setLoginEmail("");
       setLoginPassword("");
     } catch (error) {
@@ -55,60 +54,70 @@ function Home() {
     }
   };
 
-  const handleSignWithGoogle = () => {
-
-  }
-
   return (
-    <>
-      <div>
-        <h2>Register User</h2>
+    <div className="home-container">
+      <div className="auth-box">
+        <h2>Register</h2>
         <input
-          type="text"
-          placeholder="email..."
+          type="email"
+          placeholder="Email"
           value={registerEmail}
           onChange={(e) => setRegisterEmail(e.target.value)}
+          className="input-field"
         />
         <input
-          type="text"
-          placeholder="password..."
+          type="password"
+          placeholder="Password"
           value={registerPassword}
           onChange={(e) => setRegisterPassword(e.target.value)}
+          className="input-field"
         />
-        <button onClick={registerUser}>Create User</button>
+        <button onClick={registerUser} className="primary-btn">
+          Register
+        </button>
       </div>
-      <div>
-        <h2>LogIn</h2>
+
+      <div className="auth-box">
+        <h2>Login</h2>
         <input
-          type="text"
-          placeholder="email.."
+          type="email"
+          placeholder="Email"
           value={loginEmail}
           onChange={(e) => setLoginEmail(e.target.value)}
+          className="input-field"
         />
         <input
-          type="text"
-          placeholder="password.."
+          type="password"
+          placeholder="Password"
           value={loginPassword}
           onChange={(e) => setLoginPassword(e.target.value)}
+          className="input-field"
         />
-        <button onClick={loginUser}>Login</button>
+        <button onClick={loginUser} className="primary-btn">
+          Login
+        </button>
       </div>
-      <div>
-        {/* {isLoggedIn && user && ( */}
+
+      <div className="auth-info">
+        {user ? (
           <>
-            <h3>Logged in as: {user?.email}</h3>
-            
+            <h3>Logged in as: {user.email}</h3>
+            <button onClick={handleLogOut} className="secondary-btn">
+              Log Out
+            </button>
           </>
-        {/* )} */}
+        ) : (
+          <button onClick={signInWithGoogle} className="login-with-google-btn">
+            Sign in with Google
+          </button>
+        )}
+        <div className="user-info">
+          <h2>{localStorage.getItem("name")}</h2>
+          <h2>{localStorage.getItem("email")}</h2>
+          <img src={localStorage.getItem("profilePic")} alt="" />
+        </div>
       </div>
-      <div style={{marginTop:"20px"}}>
-        <button onClick={signInWithGoogle} className="login-with-google-btn">SignIn with Google</button>
-        <h2>{localStorage.getItem("name")}</h2>
-        <h2>{localStorage.getItem("email")}</h2>
-        <img src={localStorage.getItem("profilePic")} alt="" />
-      </div>
-      <button onClick={handleLogOut}>LogOut</button>
-    </>
+    </div>
   );
 }
 
